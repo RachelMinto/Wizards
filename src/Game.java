@@ -15,9 +15,11 @@ public class Game extends Canvas implements Runnable {
 		start();
 		
 		handler = new Handler();
-		this.addKeyListener(new KeyInput(handler));
-		
-		handler.addObject(new Wizard(100, 100, ID.Player, handler));
+
+		Wizard wizard = new Wizard(100, 100, ID.Player, handler);
+		this.addKeyListener(new KeyInput(wizard, handler));
+				
+		handler.addObject(wizard);
 	}
 	
 	private void start() {
@@ -31,7 +33,6 @@ public class Game extends Canvas implements Runnable {
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
