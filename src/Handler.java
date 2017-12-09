@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 public class Handler {
+	private boolean left = false, down = false, right = false, up = false;
 	
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 	
@@ -26,4 +27,36 @@ public class Handler {
 	public void removeObject(GameObject tempObject) {
 		object.remove(tempObject);
 	}
+	
+	public boolean isLeft() {
+		return left;
+	}
+
+	public void setLeft(boolean left) {
+		this.left = left;
+	}
+
+	public boolean isDown() {
+		return down;
+	}
+
+	public void setDown(boolean down) {
+		this.down = down;
+	}
+
+	public boolean isRight() {
+		return right;
+	}
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+
+	public boolean isUp() {
+		return up;
+	}
+
+	public void setUp(boolean up) {	
+		this.up = up;
+	}	
 }
