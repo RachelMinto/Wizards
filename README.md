@@ -1,7 +1,4 @@
  # Wizards
 
 
-#2df
-
-
-##fjd
+## Tutorial used to introduce me to game development in Java.

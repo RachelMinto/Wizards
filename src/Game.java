@@ -13,6 +13,8 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private Camera camera;
 	private BufferedImage level = null;
+	
+	public int ammo = 100;
 
 	public Game() {
 		new Window(1000, 563, "Wizard Game", this);
@@ -21,10 +23,10 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		camera = new Camera(0, 0);
 		this.addKeyListener(new KeyInput(handler));
-		this.addMouseListener(new MouseInput(handler, camera));
+		this.addMouseListener(new MouseInput(handler, camera, this));
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
-		level = loader.loadImage("/wizards.png");
+		level = loader.loadImage("/Wizards.png");
 		
 		loadLevel(level);
 	}
@@ -122,14 +124,17 @@ public class Game extends Canvas implements Runnable {
 					handler.addObject(new Block(xx*32, yy*32, ID.Block));
 				}
 				
-				if (blue == 255) {
+				if (blue == 255 && green == 0) {
 					handler.addObject(new Wizard(xx*32, yy*32, ID.Player, handler));
 				}
 				
-				if (green == 255) {
+				if (green == 255 && blue == 0) {
 					handler.addObject(new Enemy(xx*32, yy*32, ID.Enemy, handler));
 				}
 				
+				if (green == 255 && blue == 255) {
+					handler.addObject(new Crate(xx*32, yy*32, ID.Crate));
+				}				
 							
 			}
 		}
