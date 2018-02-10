@@ -1,16 +1,21 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 public class Wizard extends GameObject {
 	
 	Handler handler;
 	Game game;
 
-	public Wizard(int x, int y, ID id, Handler handler, Game game) {
-		super(x, y, id);
+	private BufferedImage wizard_image;
+	
+	public Wizard(int x, int y, ID id, Handler handler, Game game, SpriteSheet ss) {
+		super(x, y, id, ss);
 		this.handler = handler;
 		this.game = game;
+		
+		wizard_image = ss.grabImage(1, 1, 32, 48);
 	}
 	
 	public void tick() {
@@ -32,10 +37,8 @@ public class Wizard extends GameObject {
 		else if (!handler.isRight()) velX = 0;			
 	}
 
-	public void renderColor(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillRect(x, y, 32, 48);
-		
+	public void render(Graphics g) {
+		g.drawImage(wizard_image, x, y, null);
 	}
 	
 	private void collision() {
@@ -61,5 +64,4 @@ public class Wizard extends GameObject {
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, 32, 48);
 	}
-
 }
