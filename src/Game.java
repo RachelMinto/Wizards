@@ -125,7 +125,7 @@ public class Game extends Canvas implements Runnable {
 				}
 				
 				if (blue == 255 && green == 0) {
-					handler.addObject(new Wizard(xx*32, yy*32, ID.Player, handler));
+					handler.addObject(new Wizard(xx*32, yy*32, ID.Player, handler, this));
 				}
 				
 				if (green == 255 && blue == 0) {
